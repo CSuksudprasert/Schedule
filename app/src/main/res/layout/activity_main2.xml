@@ -7,7 +7,7 @@
     tools:context=".Main2Activity">
 
     <EditText
-        android:id="@+id/subject1_editText3"
+        android:id="@+id/time_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -18,14 +18,14 @@
         android:ems="10"
         android:hint="Time"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/add_button"
+        app:layout_constraintBottom_toTopOf="@+id/add2_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subject1_editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/day_editText" />
 
     <EditText
-        android:id="@+id/subject1_editText2"
+        android:id="@+id/day_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -36,7 +36,7 @@
         android:ems="10"
         android:hint="Day"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/subject1_editText3"
+        app:layout_constraintBottom_toTopOf="@+id/time_editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
         android:ems="10"
         android:hint="Subject"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/subject1_editText2"
+        app:layout_constraintBottom_toTopOf="@+id/day_editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
 
 
     <Button
-        android:id="@+id/add_button"
+        android:id="@+id/add2_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
