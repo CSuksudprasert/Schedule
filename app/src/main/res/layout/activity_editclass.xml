@@ -7,7 +7,7 @@
     tools:context=".Main2Activity">
 
     <Spinner
-        android:id="@+id/timeStart_spinner"
+        android:id="@+id/timeS_spinner"
         android:layout_width="212dp"
         android:layout_height="45dp"
         android:layout_marginTop="28dp"
@@ -35,7 +35,7 @@
 
 
     <Button
-        android:id="@+id/add_button"
+        android:id="@+id/add2_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

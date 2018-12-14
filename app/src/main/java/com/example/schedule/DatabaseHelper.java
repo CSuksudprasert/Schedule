@@ -46,29 +46,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv = new ContentValues();
         cv.put(COL_SUB,"ภาษาไทย");
         cv.put(COL_DAY, "Tuesday");
-        cv.put(COL_TIME,"");
-        cv.put(COL_CLASS,);
+        cv.put(COL_TIME,"10.20-12.05");
+        cv.put(COL_CLASS,"1240");
         db.insert(TABLE_NAME,null,cv);
 
         cv = new ContentValues();
         cv.put(COL_SUB,"ภาษาไทย");
         cv.put(COL_DAY, "Wednesday");
-        cv.put(COL_TIME,"");
-        cv.put(COL_CLASS,);
+        cv.put(COL_TIME,"13.00-14.45");
+        cv.put(COL_CLASS,"1240");
         db.insert(TABLE_NAME,null,cv);
 
         cv = new ContentValues();
         cv.put(COL_SUB,"ภาษาไทย");
         cv.put(COL_DAY, "Thursday");
-        cv.put(COL_TIME,"");
-        cv.put(COL_CLASS,);
+        cv.put(COL_TIME,"14.50-16.35");
+        cv.put(COL_CLASS,"1240");
         db.insert(TABLE_NAME,null,cv);
 
         cv = new ContentValues();
         cv.put(COL_SUB,"ภาษาไทย");
         cv.put(COL_DAY, "Friday");
-        cv.put(COL_TIME,"");
-        cv.put(COL_CLASS,);
+        cv.put(COL_TIME,"08.30-10.15");
+        cv.put(COL_CLASS,"1240");
         db.insert(TABLE_NAME,null,cv);
 
     }

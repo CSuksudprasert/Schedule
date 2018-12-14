@@ -17,7 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity" />
-        <activity android:name=".Main3Activity"></activity>
+        <activity android:name=".Main3Activity" />
+        <activity android:name=".model.Item_class" />
+        <activity android:name=".Item_class" />
+        <activity android:name=".Editclass"></activity>
     </application>
 
 </manifest>
