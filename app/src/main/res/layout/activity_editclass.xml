@@ -7,7 +7,7 @@
     tools:context=".Main2Activity">
 
     <EditText
-        android:id="@+id/time_editText"
+        android:id="@+id/time2_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -22,10 +22,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/day_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/day2_editText" />
 
     <EditText
-        android:id="@+id/day_editText"
+        android:id="@+id/day2_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -36,14 +36,14 @@
         android:ems="10"
         android:hint="Day"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/time_editText"
+        app:layout_constraintBottom_toTopOf="@+id/time2_editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subject1_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/subject2_editText" />
 
     <EditText
-        android:id="@+id/subject1_editText"
+        android:id="@+id/subject2_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -54,9 +54,9 @@
         android:ems="10"
         android:hint="Subject"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/day_editText"
+        app:layout_constraintBottom_toTopOf="@+id/day2_editText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread" />
@@ -73,9 +73,9 @@
         android:layout_marginBottom="84dp"
         android:text="add subject"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/subject1_editText"
+        app:layout_constraintEnd_toEndOf="@+id/subject2_editText"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/subject1_editText" />
+        app:layout_constraintStart_toStartOf="@+id/subject2_editText" />
 
 
 </android.support.constraint.ConstraintLayout>

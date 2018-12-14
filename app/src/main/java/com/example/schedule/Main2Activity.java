@@ -74,8 +74,8 @@ public class Main2Activity extends AppCompatActivity {
 
     private void doInsertItem_class() {
         subject1editText = findViewById(R.id.subject1_editText);
-        dayeditText =  findViewById(R.id.day_editText);
-        timeeditText = findViewById(R.id.time_editText);
+        dayeditText =  findViewById(R.id.day2_editText);
+        timeeditText = findViewById(R.id.time2_editText);
 
         String subject = subject1editText.getText().toString();
         String day1 = dayeditText.toString();
