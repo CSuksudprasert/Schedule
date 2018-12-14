@@ -38,7 +38,7 @@ public class Editclass extends AppCompatActivity {
         madd2Button = findViewById(R.id.add2_button);
 
         msubjectedittext.setText(subject);
-        mtimeSSpinner.setAdapter(time);
+
         madd2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

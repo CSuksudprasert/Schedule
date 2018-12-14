@@ -7,28 +7,21 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.schedule.adapter.ClassListAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.schedule.DatabaseHelper.COL_CLASS;
-import static com.example.schedule.DatabaseHelper.COL_DAY;
-import static com.example.schedule.DatabaseHelper.COL_ID;
-import static com.example.schedule.DatabaseHelper.COL_SUB;
-import static com.example.schedule.DatabaseHelper.COL_TIME;
-import static com.example.schedule.DatabaseHelper.TABLE_NAME;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,15 +39,15 @@ public class MainActivity extends AppCompatActivity {
         mHelper = new DatabaseHelper(MainActivity.this);
         mDb = mHelper.getWritableDatabase();
 
-        Button add1button = findViewById(R.id.add1_button);
-        add1button.setOnClickListener(new View.OnClickListener() {
+        Button addPhoneItemButton = findViewById(R.id.add1_button);
+        addPhoneItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this , Main2Activity.class);
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                 startActivity(intent);
-
             }
         });
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             // Permission is not granted
@@ -62,6 +55,19 @@ public class MainActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            } else {
+                finish();
+            }
+        }
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -78,39 +84,38 @@ public class MainActivity extends AppCompatActivity {
     private void loadPhoneData() {
         Cursor c = mDb.query(TABLE_NAME, null, null, null, null, null, null);
 
-        mclassItemList = new ArrayList<Item_class>();
+        mclassItemList = new ArrayList<>();
         while (c.moveToNext()) {
             long id = c.getLong(c.getColumnIndex(COL_ID));
-            String subject = c.getString(c.getColumnIndex(COL_SUB));
-            String day = c.getString(c.getColumnIndex(COL_DAY));
-            String time = c.getString(c.getColumnIndex(COL_TIME));
-            String classroom = c.getString(c.getColumnIndex(COL_CLASS));
+            String title = c.getString(c.getColumnIndex(COL_TITLE));
+            String number = c.getString(c.getColumnIndex(COL_NUMBER));
+            String image = c.getString(c.getColumnIndex(COL_IMAGE));
 
-            Item_class item = new Item_class(id, subject, day, time, classroom);
-            mclassItemList.add(item);
+            PhoneItem item = new PhoneItem(id, title, number, image);
+            mPhoneItemList.add(item);
         }
         c.close();
     }
 
     private void setupListView() {
-        ClassListAdapter adapter = new ClassListAdapter(
+        PhoneListAdapter adapter = new PhoneListAdapter(
                 MainActivity.this,
-                R.layout.activity_item_class ,
-                mclassItemList
+                R.layout.item_phone,
+                mPhoneItemList
         );
         ListView lv = findViewById(R.id.result_list_view);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Item_class item = mclassItemList.get(position);
+                PhoneItem item = mPhoneItemList.get(position);
 
-                Toast t = Toast.makeText(MainActivity.this, item.day, Toast.LENGTH_SHORT);
+                Toast t = Toast.makeText(MainActivity.this, item.number, Toast.LENGTH_SHORT);
                 t.show();
 
                 Intent intent = new Intent(
                         Intent.ACTION_DIAL,
-                        Uri.parse("tel:" + item.day)
+                        Uri.parse("tel:" + item.number)
                 );
                 startActivity(intent);
 
@@ -128,26 +133,26 @@ public class MainActivity extends AppCompatActivity {
                         .setItems(items, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                final Item_class classItem = mclassItemList.get(position);
+                                final PhoneItem phoneItem = mPhoneItemList.get(position);
 
                                 switch (i) {
                                     case 0: // Edit
-                                        Intent intent = new Intent(MainActivity.this, Editclass.class);
-                                        intent.putExtra("title", classItem.subject);
-                                        intent.putExtra("number", classItem.time);
-                                        intent.putExtra("id", classItem._id);
+                                        Intent intent = new Intent(MainActivity.this, EditPhoneItemActivity.class);
+                                        intent.putExtra("title", phoneItem.title);
+                                        intent.putExtra("number", phoneItem.number);
+                                        intent.putExtra("id", phoneItem._id);
                                         startActivity(intent);
                                         break;
                                     case 1: // Delete
                                         new AlertDialog.Builder(MainActivity.this)
-                                                .setMessage("ต้องการลบข้อมูลนี้ ใช่หรือไม่")
+                                                .setMessage("ต้องการลบข้อมูลเบอร์โทรนี้ ใช่หรือไม่")
                                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                                     @Override
                                                     public void onClick(DialogInterface dialogInterface, int i) {
                                                         mDb.delete(
                                                                 TABLE_NAME,
                                                                 COL_ID + " = ?",
-                                                                new String[]{String.valueOf(classItem._id)}
+                                                                new String[]{String.valueOf(phoneItem._id)}
                                                         );
                                                         loadPhoneData();
                                                         setupListView();
@@ -165,5 +170,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }
