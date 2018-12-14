@@ -8,26 +8,11 @@
 
     <Spinner
         android:id="@+id/timeStart_spinner"
-        android:layout_width="133dp"
+        android:layout_width="212dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toStartOf="@+id/timeFinish_spinner"
-        app:layout_constraintStart_toStartOf="@+id/subject_editText"
-        app:layout_constraintTop_toBottomOf="@+id/day_spinner" />
-
-    <Spinner
-        android:id="@+id/timeFinish_spinner"
-        android:layout_width="123dp"
-        android:layout_height="45dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="@+id/subject_editText"
-        app:layout_constraintStart_toEndOf="@+id/timeStart_spinner"
+        app:layout_constraintStart_toStartOf="@+id/subject_editText"
         app:layout_constraintTop_toBottomOf="@+id/day_spinner" />
 
     <EditText
@@ -53,14 +38,13 @@
         android:id="@+id/room_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Classroom"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/subject_editText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/subject_editText"
-        app:layout_constraintTop_toBottomOf="@+id/timeFinish_spinner" />
+        tools:layout_editor_absoluteY="306dp" />
 
     <Button
         android:id="@+id/add_button"

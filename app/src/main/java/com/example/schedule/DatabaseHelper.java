@@ -7,21 +7,26 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+
+
     private static final String DATABASE_NAME = "Schedule.db";
     private static final int DATABASE_VERSION = 1;
 
     public static final String TABLE_NAME = "Schedule";
+    public static final String COL_ID = "_id";
     public static final String COL_SUB = "Subject";
-    public static final String COL_DAY = "title";
-    public static final String COL_TIMESTART = "number";
-    public static final String COL_TIMEFINISH = "image";
+    public static final String COL_DAY = "Day";
+    public static final String COL_TIME = "Time";
+    public static final String COL_CLASS = "Classroom";
+
 
     private static final String SQL_CREATE_TABLE_SCHEDULE
             = "CREATE TABLE " + TABLE_NAME + "("
-            + COL_SUB + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COL_SUB + " TEXT,"
             + COL_DAY + " TEXT,"
-            + COL_TIMESTART + " TEXT,"
-            + COL_TIMEFINISH + " TEXT "
+            + COL_TIME + " TEXT,"
+            + COL_CLASS + "TEXT"
             + ")";
 
     public DatabaseHelper(Context context) { super(context,"Schedule.db",null,1); }
@@ -32,6 +37,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_TABLE_SCHEDULE);
 
         ContentValues cv = new ContentValues();
+        cv.put(COL_SUB,"ภาษาไทย");
+        cv.put(COL_DAY, "Monday");
+        cv.put(COL_TIME,"08.30-10.15");
+        cv.put(COL_CLASS,"1240");
+        db.insert(TABLE_NAME,null,cv);
+
+        cv = new ContentValues();
+        cv.put(COL_SUB,"ภาษาไทย");
+        cv.put(COL_DAY, "Tuesday");
+        cv.put(COL_TIME,"");
+        cv.put(COL_CLASS,);
+        db.insert(TABLE_NAME,null,cv);
+
+        cv = new ContentValues();
+        cv.put(COL_SUB,"ภาษาไทย");
+        cv.put(COL_DAY, "Wednesday");
+        cv.put(COL_TIME,"");
+        cv.put(COL_CLASS,);
+        db.insert(TABLE_NAME,null,cv);
+
+        cv = new ContentValues();
+        cv.put(COL_SUB,"ภาษาไทย");
+        cv.put(COL_DAY, "Thursday");
+        cv.put(COL_TIME,"");
+        cv.put(COL_CLASS,);
+        db.insert(TABLE_NAME,null,cv);
+
+        cv = new ContentValues();
+        cv.put(COL_SUB,"ภาษาไทย");
+        cv.put(COL_DAY, "Friday");
+        cv.put(COL_TIME,"");
+        cv.put(COL_CLASS,);
+        db.insert(TABLE_NAME,null,cv);
 
     }
 
